@@ -1,11 +1,7 @@
 import boto3
 
 # Configuración
-AWS_REGION = "eu-south-2"  # Cambia a tu región de AWS
-DATABASE_NAME = "trade_data_imat3a11"  # Nombre de la base de datos
-CRAWLER_NAME = "trade_data_crawler"
-S3_TARGET_PATH = "s3://h2datacortialbizuclaudia/data/"  # Cambia con tu bucket
-IAM_ROLE = "arn:aws:iam::288761731908:role/AWSGlueServiceRole"  # Cambia con tu rol de Glue
+
 
 # Inicializar el cliente de AWS Glue
 glue_client = boto3.client('glue', region_name=AWS_REGION,
