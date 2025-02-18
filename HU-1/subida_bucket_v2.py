@@ -3,9 +3,9 @@ import os
 import pandas as pd
 import boto3
 
-aws_access_key_id = "ASIAUGO4KLNCJ673Q6M5"
-aws_secret_access_key = "zjQ7iyVEAZ4A6vVHsWeXkWIzoG+XCCT9fD8nZMYu"
-aws_session_token = "IQoJb3JpZ2luX2VjEFIaCmV1LXNvdXRoLTIiRjBEAiBSw3YQdySqYmRdQeho62d/QhmeDs+6v0Tl8ZGSE0CopAIgdoZRh84DzDZz3HcYiPt3V83M+ev27WMkpEmeFz4Q2goq8gII9P//////////ARAAGgwyODg3NjE3MzE5MDgiDDXxUKqf90X6Do92ZSrGAgDJVItxJpnHsA1RwUfV7nQv6tbgNtx+K//u3jngxzX3fROrzKVMoQmPqQ/KjLy8QuKXBj+hUcWpJFh4JNeH+V7EkD5IpwB9JHNu4YGfY3/fdMTOL/V5GYrWyNn/IJhNbS9oVaMjq9aJcrvvBXzd1sNf4imXcwGlawGuF4lPGIZTR4qVhnwfh+8ZVBS0aTKRoHnbV+5ROMfqhAw9aPlDhSI3RuDl9INzKirXBjGzheCuYiIMWzScAA16n25ScbN1LPA4FUhxIsW6uM76D+P0DqAnTqV7+InwGM5zIDJiiFBpjOYncNX3LKS/mmfMLES0sShgoGxlcZr0C6KWuJMFuiztUVCNV90SKArShBJXAX+qwy9kNji8iPep29AHAPsDdbVdPYWTteuMrwfgDGmi3SH3UpmWtjqOn2slu77YCiFlWJAU4WDJMJvRs70GOqgBlx4RHHK1vhHNVE6NMKMOShyK+2E3vmH/hOZiA6ZDqHv40MpmjG3O105bj2PynYP80w/l9gSBakell42edWWI5kSfd1KWtl4VfMck5HWgsGrkxb2ThrKpEXjowvV2KAlmWf0hY1VsOJzvXTGet7eEv6dPvNTijzW1CQ0eAGj3VCHcDWRGcfR5wImfNtMuak575b9S9B/sFi0Cj73NGk3qbMWVnFbnyGvU"
+aws_access_key_id = "ASIAUGO4KLNCDTE7WURE"
+aws_secret_access_key = "gUbezr33NqaTSHmTdhD3KzC0ZFAHP439yTNOzqGS"
+aws_session_token = "IQoJb3JpZ2luX2VjEOH//////////wEaCmV1LXNvdXRoLTIiRzBFAiEAlyydkdYnr7eKu98Q1/fYOlhXlp0EexQcWnZIZ2v+/CoCIB+Hij4Demw8XENOoF0+3tRJdjcEnjMbifxboYgxxdOXKvICCJP//////////wEQABoMMjg4NzYxNzMxOTA4IgwjUDPltjwA9eIBXIEqxgL4ECNZhlzQhErUdbqtYjAlzJhLCChduEaE44gZALjTwFGUyDxW90TfezOKL9XKz5Z/h02L9UP7+sCSff6tiPyJ5S2H7TmEUZbnv7TpaUsjYBXXcOzZBJJzRzHnwNL/mXUd08q2A9dq09DTNuhObk+5ZmjnPAnITbSQPrf06M0xroyBeek9VOocflnwhHbHDTSM9fO3pUyIj7lNfVUeRWCZUOPwMhzfZw1umdXIrGmw/3/3dYBT7iG2A6iXcSDDGrbcB/cs5pFO/4DSHALfd0aYomIpc//Mp2cbfJUaLZf8OjUmYSpu7q4mm8wy3xnCqEPKp9PvXTKV8JablWljTkBNF/iVud0Vne2YSy9M7cSdk4r4FaPkjpNricSP0soHmiV8kHB9DWNyhp4Wj7RXsXhWeUEJXGk5iR8FeWCtp4kHR8ffQ5xlPjCRldO9BjqnAZd1DvPdCfCUBe5R3tmdMjIs5UJ+V0jVey73K2Ut/3cFMdW9PPRonRzOqtMy9BuUjH5FOhfMjhZqw6/l+HDfZ/xzMjKKOsMV/hBCe9Gt/FRZsb6jdWd4ChBrY3pjTTcsRUhqndoV7d/PRoj1Mtoxqd1SSS3qbZ+rkfOPZr0OMArZkPY5BPIkDyCYf7s9em5ZKM8BhLAEsXa2Tq0+Vu/hCMpnuhNCplR5"
 
 
 # Configura el cliente de S3
@@ -14,7 +14,7 @@ s3 = boto3.client('s3',
                   aws_secret_access_key=aws_secret_access_key,
                   aws_session_token=aws_session_token)
 
-bucket_name = "h2datacortialbizuclaudia-2"  # Reemplaza con el nombre de tu bucket
+bucket_name = "h2datacortialbizuclaudia-bronce"  # Reemplaza con el nombre de tu bucket
 request = TradingViewData()
 
 list_cryptos = ['BTCUSD', 'ETHUSD', 'XRPUSD', 'SOLUSD', 'DOGEUSD', 'ADAUSD', 'SHIBUSD', 'DOTUSD', 'AAVEUSD', 'XLMUSD']
@@ -36,7 +36,7 @@ for crypto in list_cryptos:
             local_file_path = f'csvs/{crypto}/{year}/{month}/{crypto}{year}{month}.csv'
             os.makedirs(os.path.dirname(local_file_path), exist_ok=True)
             
-            data_clone.to_csv(local_file_path, index=False)
+            data_clone.to_csv(local_file_path, index=False, float_format='%.10f')
             
             s3_key = f'data/{crypto}/{year}/{month}/{crypto}{year}{month}.csv'
             s3.upload_file(local_file_path, bucket_name, s3_key)
